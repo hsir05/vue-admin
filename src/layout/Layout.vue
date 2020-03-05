@@ -62,11 +62,15 @@
   </a-layout>
 </template>
 <script>
+import route from "@/router/index";
 export default {
   data() {
     return {
       collapsed: false
     };
+  },
+  created() {
+    console.log(route.options.routes);
   }
 };
 </script>
