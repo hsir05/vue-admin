@@ -19,11 +19,34 @@
     </a-layout-sider>
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
-        <a-icon
-          class="trigger"
-          :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-          @click="() => (collapsed = !collapsed)"
-        />
+        <div class="header-wrap">
+          <a-icon
+            class="trigger"
+            :type="collapsed ? 'menu-unfold' : 'menu-fold'"
+            @click="() => (collapsed = !collapsed)"
+          />
+
+          <a-dropdown style="margin-right:60px">
+            <a class="ant-dropdown-link" href="#">
+              <a-avatar
+                src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+              />
+              <a-icon type="down" />
+            </a>
+            <a-menu slot="overlay">
+              <a-menu-item>
+                <a href="javascript:;" class="user-item"
+                  ><a-icon type="user" />个人资料</a
+                >
+              </a-menu-item>
+              <a-menu-item>
+                <a href="javascript:;" class="user-item"
+                  ><a-icon type="logout" />退出</a
+                >
+              </a-menu-item>
+            </a-menu>
+          </a-dropdown>
+        </div>
       </a-layout-header>
       <a-layout-content
         :style="{
@@ -69,5 +92,13 @@ export default {
   height: 32px;
   background: rgba(255, 255, 255, 0.2);
   margin: 16px;
+}
+.header-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.user-item {
+  text-align: center;
 }
 </style>
