@@ -4,16 +4,16 @@
       <div class="logo" />
       <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['1']">
         <a-menu-item key="1">
-          <a-icon type="user" />
-          <span><router-link to="/home">home</router-link></span>
+          <router-link to="/home" class="link-to">
+            <a-icon type="user" />
+            <span>home</span>
+          </router-link>
         </a-menu-item>
         <a-menu-item key="2">
-          <a-icon type="video-camera" />
-          <span><router-link to="/about">about</router-link></span>
-        </a-menu-item>
-        <a-menu-item key="3">
-          <a-icon type="upload" />
-          <span>nav 3</span>
+          <router-link to="/about" class="link-to">
+            <a-icon type="video-camera" />
+            <span>about</span>
+          </router-link>
         </a-menu-item>
       </a-menu>
     </a-layout-sider>
@@ -48,6 +48,11 @@ export default {
 };
 </script>
 <style scoped>
+.link-to {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
 #components-layout-demo-custom-trigger .trigger {
   font-size: 18px;
   line-height: 64px;
