@@ -4,7 +4,7 @@
       <div class="logo" />
       <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['1']">
         <a-menu-item key="1">
-          <router-link to="/home" class="link-to">
+          <router-link to="/" class="link-to">
             <a-icon type="user" />
             <span>home</span>
           </router-link>

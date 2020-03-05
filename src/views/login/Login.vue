@@ -1,5 +1,6 @@
 <template>
   <a-form :form="form" @submit="handleSubmit" class="form">
+    <h3>xxx后台管理系统</h3>
     <a-form-item
       :validate-status="userNameError() ? 'error' : ''"
       :help="userNameError() || ''"
@@ -77,7 +78,7 @@ export default {
       this.form.validateFields((err, values) => {
         if (!err) {
           console.log(values);
-          this.$route.push("/");
+          this.$router.push("/");
         }
       });
     }
