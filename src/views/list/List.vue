@@ -22,23 +22,23 @@
 
     <!-- table -->
     <section class="btn-wrap">
-        <a-button type="primary" @click="handleAdd">Add</a-button>
+      <a-button type="primary" @click="handleAdd">Add</a-button>
     </section>
     <section class="table-wrap">
-        <a-table bordered :dataSource="dataSource" :columns="columns">
-            <!-- <template slot="name" slot-scope="text, record">
+      <a-table bordered :dataSource="dataSource" :columns="columns">
+        <!-- <template slot="name" slot-scope="text, record">
                 <editable-cell :text="text" @change="onCellChange(record.key, 'name', $event)" />
             </template> -->
-            <template slot="operation" slot-scope="text, record">
-                <a-popconfirm
-                v-if="dataSource.length"
-                title="Sure to delete?"
-                @confirm="() => onDelete(record.key)"
-                >
-                <a href="javascript:;">Delete</a>
-                </a-popconfirm>
-            </template>
-        </a-table>
+        <template slot="operation" slot-scope="text, record">
+          <a-popconfirm
+            v-if="dataSource.length"
+            title="Sure to delete?"
+            @confirm="() => onDelete(record.key)"
+          >
+            <a href="javascript:;">Delete</a>
+          </a-popconfirm>
+        </template>
+      </a-table>
     </section>
   </section>
 </template>
@@ -127,16 +127,5 @@ export default {
 };
 </script>
 <style lang="scss" scope>
-.search-wrap {
-  padding: 10px 0;
-}
-.btn-wrap{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0;
-}
-.table-wrap{
-    height: calc(100vh - 40px);
-}
+
 </style>
