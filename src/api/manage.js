@@ -1,90 +1,90 @@
-import { axios } from '@/utils/request'
+import { axios } from "@/utils/request";
 
 const api = {
-  user: '/api/user',
-  role: '/api/role',
-  service: '/api/service',
-  permission: '/api/permission',
-  permissionNoPager: '/api/permission/no-pager'
-}
+  user: "/api/user",
+  role: "/api/role",
+  service: "/api/service",
+  permission: "/api/permission",
+  permissionNoPager: "/api/permission/no-pager"
+};
 
-export default api
+export default api;
 
 //post
-export function postAction(url,parameter) {
+export function postAction(url, parameter) {
   return axios({
     url: url,
-    method:'post' ,
+    method: "post",
     data: parameter
-  })
+  });
 }
 
 //post method= {post | put}
-export function httpAction(url,parameter,method) {
+export function httpAction(url, parameter, method) {
   return axios({
     url: url,
-    method:method ,
+    method: method,
     data: parameter
-  })
+  });
 }
 
 //put
-export function putAction(url,parameter) {
+export function putAction(url, parameter) {
   return axios({
     url: url,
-    method:'put',
+    method: "put",
     data: parameter
-  })
+  });
 }
 
 //get
-export function getAction(url,parameter) {
+export function getAction(url, parameter) {
   return axios({
     url: url,
-    method: 'get',
+    method: "get",
     params: parameter
-  })
+  });
 }
 
 //deleteAction
-export function deleteAction(url,parameter) {
+export function deleteAction(url, parameter) {
   return axios({
     url: url,
-    method: 'delete',
+    method: "delete",
     params: parameter
-  })
+  });
 }
 
 export function getUserList(parameter) {
   return axios({
     url: api.user,
-    method: 'get',
+    method: "get",
     params: parameter
-  })
+  });
 }
 
 export function getRoleList(parameter) {
   return axios({
     url: api.role,
-    method: 'get',
+    method: "get",
     params: parameter
-  })
+  });
 }
 
 export function getServiceList(parameter) {
   return axios({
     url: api.service,
-    method: 'get',
+    method: "get",
     params: parameter
-  })
+  });
 }
 
 export function getPermissions(parameter) {
   return axios({
     url: api.permissionNoPager,
-    method: 'get',
+    method: "get",
     params: parameter
-  })
+  });
 }
 
 // id == 0 add     post
@@ -92,9 +92,9 @@ export function getPermissions(parameter) {
 export function saveService(parameter) {
   return axios({
     url: api.service,
-    method: parameter.id == 0 ? 'post' : 'put',
+    method: parameter.id == 0 ? "post" : "put",
     data: parameter
-  })
+  });
 }
 
 /**
@@ -103,13 +103,13 @@ export function saveService(parameter) {
  * @param parameter
  * @returns {*}
  */
-export function downFile(url,parameter){
+export function downFile(url, parameter) {
   return axios({
     url: url,
     params: parameter,
-    method:'get' ,
-    responseType: 'blob'
-  })
+    method: "get",
+    responseType: "blob"
+  });
 }
 
 /**
@@ -119,10 +119,10 @@ export function downFile(url,parameter){
  * @param str
  * @returns {*}
  */
-export function getFileAccessHttpUrl(avatar,imgerver,subStr) {
-  if(avatar && avatar.indexOf(subStr) != -1 ){
+export function getFileAccessHttpUrl(avatar, imgerver, subStr) {
+  if (avatar && avatar.indexOf(subStr) != -1) {
     return avatar;
-  }else{
+  } else {
     return imgerver + "/" + avatar;
   }
 }

@@ -15,6 +15,13 @@
             <span>about</span>
           </router-link>
         </a-menu-item>
+
+        <a-menu-item key="3">
+          <router-link to="/list" class="link-to">
+            <a-icon type="video-camera" />
+            <span>list</span>
+          </router-link>
+        </a-menu-item>
       </a-menu>
     </a-layout-sider>
     <a-layout>
