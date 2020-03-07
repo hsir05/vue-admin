@@ -47,8 +47,8 @@
                 >
               </a-menu-item>
               <a-menu-item>
-                <a href="javascript:;" class="user-item"
-                  ><a-icon type="logout" />退出</a
+                <span href="javascript:;" @click="logout" class="user-item"
+                  ><a-icon type="logout" />退出</span
                 >
               </a-menu-item>
             </a-menu>
@@ -78,6 +78,11 @@ export default {
   },
   created() {
     console.log(route.options.routes);
+  },
+  methods: {
+      logout(){
+        this.$router.push("/login");
+      }
   }
 };
 </script>
