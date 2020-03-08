@@ -65,7 +65,7 @@
           padding: '24px',
           background: '#fff',
           minHeight: '280px',
-          overflow: 'scroll'
+          overflowY: 'scroll'
         }"
       >
         <router-view />

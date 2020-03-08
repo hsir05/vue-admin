@@ -52,6 +52,16 @@ const routes = [
             path: "/test/list",
             name: "List2",
             component: () => import("../views/list/List.vue")
+          },
+          {
+            path: "/test/404",
+            name: "404",
+            component: () => import("../views/errors/404.vue")
+          },
+          {
+            path: "/test/500",
+            name: "500",
+            component: () => import("../views/errors/500.vue")
           }
         ]
       }
