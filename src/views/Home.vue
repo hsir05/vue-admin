@@ -6,7 +6,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
@@ -16,3 +15,8 @@ export default {
   }
 };
 </script>
+<style scoped lang="scss">
+.home {
+  text-align: center;
+}
+</style>

@@ -25,7 +25,12 @@
       <a-button type="primary" @click="handleAdd">Add</a-button>
     </section>
     <section class="table-wrap">
-      <a-table bordered :dataSource="dataSource" :columns="columns" :rowSelection="rowSelection">
+      <a-table
+        bordered
+        :dataSource="dataSource"
+        :columns="columns"
+        :rowSelection="rowSelection"
+      >
         <!-- <template slot="name" slot-scope="text, record">
                 <editable-cell :text="text" @change="onCellChange(record.key, 'name', $event)" />
             </template> -->
@@ -45,17 +50,21 @@
 
 <script>
 // import EditableCell from './EditableCell';
- const rowSelection = {
-    onChange: (selectedRowKeys, selectedRows) => {
-      console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-    },
-    onSelect: (record, selected, selectedRows) => {
-      console.log(record, selected, selectedRows);
-    },
-    onSelectAll: (selected, selectedRows, changeRows) => {
-      console.log(selected, selectedRows, changeRows);
-    },
-  };
+const rowSelection = {
+  onChange: (selectedRowKeys, selectedRows) => {
+    console.log(
+      `selectedRowKeys: ${selectedRowKeys}`,
+      "selectedRows: ",
+      selectedRows
+    );
+  },
+  onSelect: (record, selected, selectedRows) => {
+    console.log(record, selected, selectedRows);
+  },
+  onSelectAll: (selected, selectedRows, changeRows) => {
+    console.log(selected, selectedRows, changeRows);
+  }
+};
 export default {
   components: {
     //   EditableCell,
@@ -80,14 +89,14 @@ export default {
       rowSelection,
       count: 2,
       columns: [
-           {
-          title: '#',
-          dataIndex: '',
-          key: 'rowIndex',
+        {
+          title: "#",
+          dataIndex: "",
+          key: "rowIndex",
           width: 60,
-          align: 'center',
+          align: "center",
           customRender: function(t, r, index) {
-            return parseInt(index) + 1
+            return parseInt(index) + 1;
           }
         },
         {
@@ -148,6 +157,4 @@ export default {
   }
 };
 </script>
-<style lang="scss" scope>
-
-</style>
+<style lang="scss" scope></style>

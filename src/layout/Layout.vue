@@ -2,26 +2,29 @@
   <a-layout id="components-layout-demo-custom-trigger" style="height:100%">
     <a-layout-sider :trigger="null" collapsible v-model="collapsed">
       <div class="logo" />
-      <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['1']">
-        <a-menu-item key="1">
-          <router-link to="/" class="link-to">
-            <a-icon type="user" />
-            <span>home</span>
-          </router-link>
-        </a-menu-item>
-        <a-menu-item key="2">
-          <router-link to="/about" class="link-to">
-            <a-icon type="video-camera" />
-            <span>about</span>
-          </router-link>
-        </a-menu-item>
+      <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['0']">
+        <template v-for="(item, index) in routesList.children">
+          <a-menu-item :key="index" v-if="!item.children">
+            <router-link :to="item.path" class="link-to">
+              <a-icon :type="item.icon" />
+              <span>{{ item.name }}</span>
+            </router-link>
+          </a-menu-item>
 
-        <a-menu-item key="3">
-          <router-link to="/list" class="link-to">
-            <a-icon type="video-camera" />
-            <span>list</span>
-          </router-link>
-        </a-menu-item>
+          <a-sub-menu :key="index" v-else>
+            <span slot="title"
+              ><a-icon :type="item.icon" /> <span>{{ item.name }}</span></span
+            >
+            <a-menu-item
+              :key="`${index}-${ind}`"
+              v-for="(val, ind) in item.children"
+            >
+              <router-link :to="val.path" class="link-to">
+                <span>{{ val.name }}</span>
+              </router-link>
+            </a-menu-item>
+          </a-sub-menu>
+        </template>
       </a-menu>
     </a-layout-sider>
     <a-layout>
@@ -40,6 +43,7 @@
               />
               <a-icon type="down" />
             </a>
+
             <a-menu slot="overlay">
               <a-menu-item>
                 <a href="javascript:;" class="user-item"
@@ -74,16 +78,18 @@ import route from "@/router/index";
 export default {
   data() {
     return {
-      collapsed: false
+      collapsed: false,
+      routesList: []
     };
   },
   created() {
-    console.log(route.options.routes);
+    this.routesList = route.options.routes.find(item => item.path === "/");
+    console.log(this.routesList);
   },
   methods: {
-      logout(){
-        this.$router.push("/login");
-      }
+    logout() {
+      this.$router.push("/login");
+    }
   }
 };
 </script>
