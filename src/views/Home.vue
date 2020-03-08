@@ -1,22 +1,33 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <a-card title="Card title" :bordered="true" style="width: 33.3%">
+      <p>Card content</p>
+      <p>Card content</p>
+      <p>Card content</p>
+    </a-card>
+    <a-card title="Card title" :bordered="true" style="width: 33.3%">
+      <p>Card content</p>
+      <p>Card content</p>
+      <p>Card content</p>
+    </a-card>
+    <a-card title="Card title" :bordered="true" style="width: 33.3%">
+      <p>Card content</p>
+      <p>Card content</p>
+      <p>Card content</p>
+    </a-card>
   </div>
 </template>
 
 <script>
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "Home",
-  components: {
-    HelloWorld
-  }
+  components: {}
 };
 </script>
 <style scoped lang="scss">
 .home {
   text-align: center;
+  display: flex;
+  justify-content: space-between;
 }
 </style>
