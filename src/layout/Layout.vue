@@ -84,7 +84,6 @@ export default {
   },
   created() {
     this.routesList = route.options.routes.find(item => item.path === "/");
-    console.log(this.routesList);
   },
   methods: {
     logout() {

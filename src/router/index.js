@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Layout from "../layout/Layout.vue";
-import Login from "../views/login/Login.vue";
 
 Vue.use(VueRouter);
 
@@ -9,7 +8,7 @@ const routes = [
   {
     path: "/login",
     name: "Login",
-    component: Login
+    component: () => import("../views/login/Login.vue")
   },
   {
     path: "/404",
@@ -57,7 +56,8 @@ const routes = [
         ]
       }
     ]
-  }
+  },
+  { path: "*", redirect: "/" }
 ];
 
 const router = new VueRouter({
