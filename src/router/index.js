@@ -54,13 +54,18 @@ const routes = [
             component: () => import("../views/form/Basic.vue")
           },
           {
+            path: "/ueditor",
+            name: "Ueditor",
+            component: () => import("../views/form/Ueditor.vue")
+          },
+          {
             path: "/test/list",
             name: "List2",
             component: () => import("../views/list/List.vue")
           },
           {
             path: "/test/404",
-            name: "404",
+            name: "404s",
             component: () => import("../views/errors/404.vue")
           },
           {
