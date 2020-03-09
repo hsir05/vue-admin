@@ -49,6 +49,11 @@ const routes = [
             component: () => import("../views/test/Children.vue")
           },
           {
+            path: "/form",
+            name: "Form",
+            component: () => import("../views/form/Basic.vue")
+          },
+          {
             path: "/test/list",
             name: "List2",
             component: () => import("../views/list/List.vue")
