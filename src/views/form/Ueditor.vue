@@ -28,6 +28,7 @@ export default {
   }
 };
 </script>
+
 <style scoped>
 .editor-wrap {
   margin: 40px 0;

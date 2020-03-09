@@ -1,6 +1,7 @@
 <template>
   <div class="">
     <!-- 图片上传组件辅助-->
+    
     <!-- <el-form
             ref="newUploadForm"
             :model="newUploadForm"
@@ -203,12 +204,10 @@ export default {
       } else {
         this.$message.error("图片插入失败");
       }
-      // loading动画消失
       this.quillUpdateImg = false;
     },
     // 富文本图片上传失败
     uploadError() {
-      // loading动画消失
       this.quillUpdateImg = false;
       this.$message.error("图片插入失败");
     }
