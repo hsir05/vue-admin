@@ -38,6 +38,12 @@ const routes = [
         component: () => import("../views/list/List.vue")
       },
       {
+        path: "/echarts",
+        name: "echarts",
+        icon: "bars",
+        component: () => import("../views/echarts/Echarts.vue")
+      },
+      {
         path: "/test",
         name: "Test",
         icon: "setting",
