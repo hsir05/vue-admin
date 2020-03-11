@@ -1,7 +1,13 @@
 <template>
-  <section class="wrap">
-    <div class="chart" ref="chart" id="chart"></div>
-    <div class="chart" ref="charts" id="charts"></div>
+  <section>
+    <div class="wrap">
+      <div class="chart" ref="chart" id="chart"></div>
+      <div class="chart" ref="charts" id="charts"></div>
+    </div>
+    <div class="wrap">
+      <div class="chart" ref="chart1" id="chart1"></div>
+      <div class="chart" ref="chart2" id="chart2"></div>
+    </div>
   </section>
 </template>
 
@@ -16,6 +22,7 @@ export default {
   mounted() {
     this.pieChart();
     this.lineChart();
+    this.gaugeChart();
   },
   methods: {
     pieChart() {
@@ -67,6 +74,30 @@ export default {
       myChart.setOption(option, true);
       myChart.hideLoading();
     },
+    gaugeChart() {
+      let myChart = echarts.init(document.getElementById("chart1"));
+
+      let option = {
+        tooltip: {
+          formatter: "{a} <br/>{b} : {c}%"
+        },
+        toolbox: {
+          feature: {
+            restore: {},
+            saveAsImage: {}
+          }
+        },
+        series: [
+          {
+            name: "业务指标",
+            type: "gauge",
+            detail: { formatter: "{value}%" },
+            data: [{ value: 50, name: "完成率" }]
+          }
+        ]
+      };
+      myChart.setOption(option, true);
+    },
     lineChart() {
       let myChart = echarts.init(document.getElementById("charts"));
 
@@ -94,7 +125,7 @@ export default {
 
 <style scoped>
 .chart {
-  width: 500px;
+  width: 50%;
   height: 400px;
 }
 .wrap {
