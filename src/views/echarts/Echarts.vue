@@ -3,9 +3,9 @@
     <div class="wrap">
       <div class="chart" ref="chart" id="chart"></div>
       <div class="chart" ref="charts" id="charts"></div>
+      <div class="chart" ref="chart1" id="chart1"></div>
     </div>
     <div class="wrap">
-      <div class="chart" ref="chart1" id="chart1"></div>
       <div class="chart" ref="chart2" id="chart2"></div>
     </div>
   </section>
@@ -72,11 +72,9 @@ export default {
         ]
       };
       myChart.setOption(option, true);
-      myChart.hideLoading();
     },
     gaugeChart() {
       let myChart = echarts.init(document.getElementById("chart1"));
-
       let option = {
         tooltip: {
           formatter: "{a} <br/>{b} : {c}%"
@@ -100,7 +98,6 @@ export default {
     },
     lineChart() {
       let myChart = echarts.init(document.getElementById("charts"));
-
       let option = {
         xAxis: {
           type: "category",
@@ -125,8 +122,8 @@ export default {
 
 <style scoped>
 .chart {
-  width: 50%;
-  height: 400px;
+  width: 33.3%;
+  height: 300px;
 }
 .wrap {
   display: flex;
