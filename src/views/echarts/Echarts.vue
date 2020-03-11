@@ -1,6 +1,7 @@
 <template>
-  <section class="">
+  <section class="wrap">
     <div class="chart" ref="chart" id="chart"></div>
+    <div class="chart" ref="charts" id="charts"></div>
   </section>
 </template>
 
@@ -14,6 +15,7 @@ export default {
   },
   mounted() {
     this.pieChart();
+    this.lineChart();
   },
   methods: {
     pieChart() {
@@ -65,104 +67,24 @@ export default {
       myChart.setOption(option, true);
       myChart.hideLoading();
     },
-    lineChart(titleText, initData) {
-      let legendData = [];
-      let date = [];
-      let data = [];
-      date = Object.keys(initData);
-      data = Object.values(initData);
-      legendData = date;
-
-      let myChart = echarts.init(document.getElementById("chart"));
+    lineChart() {
+      let myChart = echarts.init(document.getElementById("charts"));
 
       let option = {
-        title: {
-          text: `浏览/检索结果按${titleText}分布图`,
-          top: "top",
-          left: "center"
-        },
-        tooltip: {
-          trigger: "axis"
-          // formatter(params){
-          //     return params[0].name + '<br/>' + params[0].value + '(篇)'
-          // }
-        },
-        legend: {
-          data: legendData,
-          bottom: "5"
-        },
-        grid: {
-          left: 35,
-          top: 70,
-          right: 25,
-          bottom: 60
-        },
-        toolbox: {
-          show: true,
-          right: "10",
-          y: "top",
-          feature: {
-            dataView: { readOnly: false },
-            restore: {},
-            saveAsImage: {}
-            // myTool1: {
-            //     show: true,
-            //     title: 'WORD',
-            //     icon: `path://${this.iconWord}`,
-            //     onclick: () => {
-            //        this.download()
-            //     }
-            // },
-            // myTool2: {
-            //     show: true,
-            //     title: 'EXCEL',
-            //     icon: `path://${this.iconEXCEL}`,
-            //     onclick: () => {
-            //        this.download()
-            //     }
-            // },
-            // myToolPPT: {
-            //     show: true,
-            //     title: 'PPT',
-            //      icon: `path: ${this.iconPPT}`,
-            //     onclick: () => {
-            //        this.download()
-            //     }
-            // },
-          }
-        },
         xAxis: {
           type: "category",
-          data: date,
-          axisLabel: {
-            interval: 0,
-            rotate: 45,
-            formatter: function(value) {
-              return value.length >= 8 ? value.substring(0, 8) + "..." : value;
-            }
-          }
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
         },
-        yAxis: [
+        yAxis: {
+          type: "value"
+        },
+        series: [
           {
-            type: "value",
-            splitArea: { show: true }
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: "line",
+            smooth: true
           }
-        ],
-        series: {
-          data: data,
-          type: "bar",
-          // name: '篇',
-          barWidth: 25,
-          itemStyle: {
-            normal: {
-              label: {
-                formatter: "{c}",
-                show: true,
-                position: "top"
-              }
-            }
-          }
-        }
+        ]
       };
       myChart.setOption(option, true);
     }
@@ -174,5 +96,9 @@ export default {
 .chart {
   width: 500px;
   height: 400px;
+}
+.wrap {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
