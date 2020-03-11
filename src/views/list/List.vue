@@ -19,11 +19,11 @@
         </a-button>
       </a-form-item>
     </a-form>
-
-    <!-- table -->
+    <!-- 按钮 -->
     <section class="btn-wrap">
       <a-button type="primary" @click="handleAdd">Add</a-button>
     </section>
+    <!-- table -->
     <section class="table-wrap">
       <a-table
         bordered
@@ -31,9 +31,6 @@
         :columns="columns"
         :rowSelection="rowSelection"
       >
-        <!-- <template slot="name" slot-scope="text, record">
-                <editable-cell :text="text" @change="onCellChange(record.key, 'name', $event)" />
-            </template> -->
         <template slot="operation" slot-scope="text, record">
           <a-popconfirm
             v-if="dataSource.length"
@@ -42,14 +39,13 @@
           >
             <a-button type="danger">Delete</a-button>
           </a-popconfirm>
-
           <a-button type="primary" @click="handle" style="margin-left: 10px"
             >查看</a-button
           >
         </template>
       </a-table>
     </section>
-
+    <!-- modal -->
     <row-modal ref="RowModal" />
   </section>
 </template>
