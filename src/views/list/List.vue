@@ -40,16 +40,22 @@
             title="Sure to delete?"
             @confirm="() => onDelete(record.key)"
           >
-            <a href="javascript:;">Delete</a>
+            <a-button type="danger">Delete</a-button>
           </a-popconfirm>
+
+          <a-button type="primary" @click="handle" style="margin-left: 10px"
+            >查看</a-button
+          >
         </template>
       </a-table>
     </section>
+
+    <row-modal ref="RowModal" />
   </section>
 </template>
 
 <script>
-// import EditableCell from './EditableCell';
+import RowModal from "./modal/RowModal";
 const rowSelection = {
   onChange: (selectedRowKeys, selectedRows) => {
     console.log(
@@ -67,7 +73,7 @@ const rowSelection = {
 };
 export default {
   components: {
-    //   EditableCell,
+    RowModal
   },
   data() {
     return {
@@ -130,6 +136,9 @@ export default {
           console.log("Received values of form: ", values);
         }
       });
+    },
+    handle() {
+      this.$refs.RowModal.showDrawer();
     },
     onCellChange(key, dataIndex, value) {
       const dataSource = [...this.dataSource];
