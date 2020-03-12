@@ -13,7 +13,7 @@ const routes = [
   {
     path: "/404",
     name: "404",
-    component: () => import("../views/errors/404.vue")
+    component: () => import("../views/exception/404.vue")
   },
   {
     path: "/",
@@ -71,13 +71,8 @@ const routes = [
           },
           {
             path: "/test/404",
-            name: "404s",
-            component: () => import("../views/errors/404.vue")
-          },
-          {
-            path: "/test/500",
-            name: "500",
-            component: () => import("../views/errors/500.vue")
+            name: "404",
+            component: () => import("../views/exception/404.vue")
           }
         ]
       }
