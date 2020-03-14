@@ -58,7 +58,7 @@ module.exports = {
         ws: false,
         changeOrigin: true,
         pathRewrite: {
-          "/jeecg-boot": "" //默认所有请求都加了jeecg-boot前缀，需要去掉
+          "/": ""
         }
       }
     }
