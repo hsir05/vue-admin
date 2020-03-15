@@ -33,8 +33,10 @@ export default {
           formatter: "{a} <br/>{b}: {c} ({d}%)"
         },
         legend: {
-          orient: "vertical",
+          // type: "scroll",
+          // orient: "vertical",
           left: 10,
+          bottom: 0,
           data: ["直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎"]
         },
         series: [
