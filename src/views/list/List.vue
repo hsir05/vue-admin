@@ -158,8 +158,14 @@ export default {
       };
       this.dataSource = [...dataSource, newData];
       this.count = count + 1;
+    },
+    ids() {
+        let ids = this.multipleSelection.reduce( (sum, val) => {
+                return (sum ?  sum+',' : sum) + val.id
+            }, '')
+            return ids
+        },
     }
-  }
 };
 </script>
 <style lang="scss" scope></style>
