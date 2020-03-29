@@ -29,3 +29,21 @@ const fileName = "导出所有条目" + ".xlsx"
 this.blobFileDownload(fileName, content)
 
 ```
+
+2. post
+
+```javascript
+export const fetchSurvey = (url, row) => {
+    let option = { ...row }
+    let data = new URLSearchParams();
+    for (let key in option) {
+        data.append(key, option[key]);
+    }
+    return request({
+        // url: '/dp-indicator/overview/survey',
+        url: url,
+        method: 'post',
+        data: data
+    })
+}
+```
