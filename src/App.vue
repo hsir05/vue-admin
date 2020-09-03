@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <a-locale-provider :locale="zhCN">
-     <keep-alive >
-      <router-view v-if="$route.meta.keepAlive"></router-view>
-    </keep-alive>
-    
-    <router-view v-if="!$route.meta.keepAlive"></router-view>
+      <keep-alive>
+        <router-view v-if="$route.meta.keepAlive"></router-view>
+      </keep-alive>
+
+      <router-view v-if="!$route.meta.keepAlive"></router-view>
     </a-locale-provider>
   </div>
 </template>

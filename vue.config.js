@@ -49,20 +49,26 @@ module.exports = {
       }
     }
   },
-
-  devServer: {
-    port: 3000,
-    proxy: {
-      "/api": {
-        target: "https://mock.ihx.me/mock/5baf3052f7da7e07e04a5116/antd-pro", //mock API接口系统
-        ws: false,
-        changeOrigin: true,
-        pathRewrite: {
-          "/": ""
+    devServer: {
+        // 端口
+        port: 80,
+        // 项目启动后打开浏览器
+        open: true,
+        overlay: {
+            warnings: false,
+            errors: true
+        },
+        proxy: {
+            '/api': {
+                target: `http://119.78.100.229`,
+                changeOrigin: true,
+                proxyTimeout: 10 * 60 * 1000,
+                // pathRewrite: {
+                //     ['^' + process.env.VUE_APP_BASE_API]: ''
+                // }
+            }
         }
-      }
-    }
-  },
+    },
 
   lintOnSave: undefined
 };

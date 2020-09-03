@@ -1,12 +1,12 @@
 import { mapGetters } from "vuex";
 const version = require("element-ui/package.json").version; // element-ui version from node_modules
 const ORIGINAL_THEME = "#409EFF"; // default color
-export default function () {
+export default function() {
   return {
     data() {
       return {
         themeVal: ORIGINAL_THEME
-      }
+      };
     },
     created() {
       this.themeVal = this.colorName;
@@ -61,7 +61,7 @@ export default function () {
         );
         for (let i = 0; i < link.length; i++) {
           const style = link[i];
-          if (style.href.includes('css')) {
+          if (style.href.includes("css")) {
             this.getCSSString(style.href, innerText => {
               const originalCluster = this.getThemeCluster(
                 ORIGINAL_THEME.replace("#", "")
@@ -82,12 +82,10 @@ export default function () {
           }
         }
 
-        const styles = [].slice.call(document.querySelectorAll("style"))
+        const styles = [].slice.call(document.querySelectorAll("style"));
 
         styles.forEach(style => {
-          const {
-            innerText
-          } = style;
+          const { innerText } = style;
           if (typeof innerText !== "string") return;
           style.innerText = this.updateStyle(
             innerText,
@@ -99,7 +97,10 @@ export default function () {
       updateStyle(style, oldCluster, newCluster) {
         let newStyle = style;
         oldCluster.forEach((color, index) => {
-          newStyle = newStyle.replace(new RegExp(color, "ig"), newCluster[index]);
+          newStyle = newStyle.replace(
+            new RegExp(color, "ig"),
+            newCluster[index]
+          );
         });
         return newStyle;
       },
@@ -109,7 +110,10 @@ export default function () {
         xhr.onreadystatechange = () => {
           if (xhr.readyState === 4 && xhr.status === 200) {
             if (variable) {
-              this[variable] = xhr.responseText.replace(/@font-face{[^}]+}/, "");
+              this[variable] = xhr.responseText.replace(
+                /@font-face{[^}]+}/,
+                ""
+              );
             }
             callback(xhr.responseText);
           }
@@ -164,5 +168,5 @@ export default function () {
         return clusters;
       }
     }
-  }
+  };
 }

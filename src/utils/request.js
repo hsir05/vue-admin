@@ -1,29 +1,22 @@
 import Vue from "vue";
 import axios from "axios";
 import store from "@/store";
-import { VueAxios } from "./axios";
+import { Base64 } from 'js-base64';
 import { Modal, notification } from "ant-design-vue";
 import { ACCESS_TOKEN } from "@/store/mutation-types";
-
-//自动设置后台服务 baseURL (也可以手工指定写死项目名字)
-let baseDomain = window._CONFIG["domianURL"];
-let baseProject = baseDomain.substring(baseDomain.lastIndexOf("/"));
-console.log("baseDomain= ", baseDomain);
-console.log("baseProject= ", baseProject);
+import settings from '@/settings';
+import { getSession } from './store'
 
 // 创建 axios 实例
 const service = axios.create({
-  //baseURL: '/jeecg-boot',
-  baseURL: baseProject, // api base_url
+  baseURL: '/api', // api base_url
   timeout: 9000 // 请求超时时间
 });
 
 const err = error => {
-  if (error.response) {
+  if (error.response) { 
     let data = error.response.data;
-    const token = Vue.ls.get(ACCESS_TOKEN);
-    console.log("------异常响应------", token);
-    console.log("------异常响应------", error.response.status);
+      let token = getSession('access-token') 
     switch (error.response.status) {
       case 403:
         notification.error({
@@ -33,12 +26,7 @@ const err = error => {
         });
         break;
       case 500:
-        //notification.error({ message: '系统提示', description:'Token失效，请重新登录!',duration: 4})
         if (token && data.message == "Token失效，请重新登录") {
-          // update-begin- --- author:scott ------ date:20190225 ---- for:Token失效采用弹框模式，不直接跳转----
-          // store.dispatch('Logout').then(() => {
-          //     window.location.reload()
-          // })
           Modal.error({
             title: "登录已过期",
             content: "很抱歉，登录已过期，请重新登录",
@@ -51,7 +39,6 @@ const err = error => {
               });
             }
           });
-          // update-end- --- author:scott ------ date:20190225 ---- for:Token失效采用弹框模式，不直接跳转----
         }
         break;
       case 404:
@@ -90,21 +77,13 @@ const err = error => {
   return Promise.reject(error);
 };
 
-// request interceptor
 service.interceptors.request.use(
   config => {
-    const token = Vue.ls.get(ACCESS_TOKEN);
-    if (token) {
-      config.headers["X-Access-Token"] = token; // 让每个请求携带自定义 token 请根据实际情况自行修改
-    }
-    if (config.method == "get") {
-      if (config.url.indexOf("sys/dict/getDictItems") < 0) {
-        config.params = {
-          _t: Date.parse(new Date()) / 1000,
-          ...config.params
-        };
-      }
-    }
+        config.headers['Authorization'] = `Basic ${Base64.encode(`${settings.clientId}:${settings.clientSecret}`)}`;
+        let token = sessionStorage.getItem('token')
+        if (token) {
+            config.headers.common['Blade-Auth'] = 'bearer ' + token.content
+        } 
     return config;
   },
   error => {
@@ -112,16 +91,8 @@ service.interceptors.request.use(
   }
 );
 
-// response interceptor
 service.interceptors.response.use(response => {
   return response.data;
 }, err);
 
-const installer = {
-  vm: {},
-  install(Vue, router = {}) {
-    Vue.use(VueAxios, router, service);
-  }
-};
-
-export { installer as VueAxios, service as axios };
+export default service
