@@ -1,8 +1,9 @@
 <template>
   <a-layout id="components-layout-demo-custom-trigger" style="height:100%">
     <a-layout-sider :trigger="null" collapsible v-model="collapsed">
-      <div class="logo" />
-      <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['0']">
+      <div class="logo" ></div>
+      <div class="menu-wrap" >
+          <a-menu theme="dark" mode="inline" :defaultSelectedKeys="['0']" style="overflow-y:scroll">
         <template v-for="(item, index) in routesList.children">
           <a-menu-item :key="index" v-if="!item.children">
             <router-link :to="item.path" class="link-to">
@@ -26,6 +27,7 @@
           </a-sub-menu>
         </template>
       </a-menu>
+      </div>
     </a-layout-sider>
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
@@ -36,23 +38,19 @@
             @click="() => (collapsed = !collapsed)"
           />
 
-          <a-dropdown style="margin-right:60px">
+          <a-dropdown style="margin-right:30px">
             <a class="ant-dropdown-link" href="#">
-              <a-avatar
-                src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-              />
+              <a-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"/>
               <a-icon type="down" />
             </a>
 
-            <a-menu slot="overlay">
-              <a-menu-item>
-                <a href="javascript:;" class="user-item"
-                  ><a-icon type="user" />个人资料</a
-                >
-              </a-menu-item>
+            <a-menu slot="overlay" style="width:120px;text-align:center">
+              <!-- <a-menu-item>
+                <a href="javascript:;" class="user-item"><a-icon type="user" />个人资料</a >
+              </a-menu-item> -->
               <a-menu-item>
                 <span href="javascript:;" @click="logout" class="user-item"
-                  ><a-icon type="logout" />退出</span
+                  ><a-icon type="logout" />&nbsp; &nbsp; &nbsp; &nbsp; 退出</span
                 >
               </a-menu-item>
             </a-menu>
@@ -87,7 +85,13 @@ export default {
   },
   methods: {
     logout() {
-      this.$router.push("/login");
+        this.$store.dispatch('logout')
+        .then(() => {
+                this.$router.push({ path: "/login" });
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
   }
 };
@@ -111,9 +115,17 @@ export default {
 }
 
 #components-layout-demo-custom-trigger .logo {
+  text-align: center;
+  color: white;
   height: 32px;
-  background: rgba(255, 255, 255, 0.2);
+  line-height: 32px;
+  font-size: 20px;
+  /* background: rgba(255, 255, 255, 0.2); */
   margin: 16px;
+}
+.menu-wrap{
+    height: 665px;
+    overflow-y: scroll;
 }
 .header-wrap {
   display: flex;

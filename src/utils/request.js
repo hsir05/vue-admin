@@ -80,9 +80,9 @@ const err = error => {
 service.interceptors.request.use(
   config => {
         config.headers['Authorization'] = `Basic ${Base64.encode(`${settings.clientId}:${settings.clientSecret}`)}`;
-        let token = sessionStorage.getItem('token')
+        let token = getSession('access-token')
         if (token) {
-            config.headers.common['Blade-Auth'] = 'bearer ' + token.content
+            config.headers.common['Blade-Auth'] = 'bearer ' + token
         } 
     return config;
   },

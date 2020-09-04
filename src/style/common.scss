@@ -1,12 +1,29 @@
 .search-wrap {
   padding: 10px 0;
 }
-.btn-wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px 0;
-}
 .table-wrap {
   height: calc(100vh - 40px);
+}
+.wrap{
+    padding: 20px 0;
+}
+.breadcrumb-wrap{
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #e5e5e5;
+}
+.form-wrap{
+    width: 500px;
+    // margin: 0 auto;
+}
+.progress-wrap{
+    padding:20px 35px;
+    width: 550px;
+    display: flex;
+    .progress-title{
+        width: 90px;
+    }
+}
+.btn-wrap{
+    padding: 10px 0;
+    margin: 10px 0;
 }

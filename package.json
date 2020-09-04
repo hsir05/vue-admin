@@ -8,10 +8,9 @@
     "lint": "eslint --fix --ext .js,.vue src"
   },
   "dependencies": {
-    "ant-design-vue": "^1.4.12",
+    "ant-design-vue": "^1.6.5",
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
-    "echarts": "^4.6.0",
     "path-to-regexp": "^6.1.0",
     "vue": "^2.6.11",
     "js-md5": "^0.7.3",

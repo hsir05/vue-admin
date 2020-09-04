@@ -51,12 +51,14 @@ module.exports = {
   },
     devServer: {
         // 端口
-        port: 80,
+        port: 3000,
         // 项目启动后打开浏览器
         open: true,
         overlay: {
             warnings: false,
             errors: true
+
+
         },
         proxy: {
             '/api': {

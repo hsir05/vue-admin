@@ -22,7 +22,16 @@
         :validate-status="passwordError() ? 'error' : ''"
         :help="passwordError() || ''"
         >
-        <a-input size="large"
+        <a-input-password placeholder="testUser123456" v-decorator="[
+            'password',
+            {
+                rules: [{ required: true, message: '请输入密码 ' }]
+            }
+            ]" size="large" >
+            <a-icon slot="prefix" type="lock" style="color:rgba(0,0,0,.25)" />
+        </a-input-password> 
+
+        <!-- <a-input size="large"
             v-decorator="[
             'password',
             {
@@ -33,7 +42,7 @@
             placeholder="testUser123456"
         >
             <a-icon slot="prefix" type="lock" style="color:rgba(0,0,0,.25)" />
-        </a-input>
+        </a-input> -->
         </a-form-item>
         <a-form-item>
         <a-button
@@ -59,7 +68,7 @@ export default {
   name: "Login",
   data() {
     return {
-    pwdType: 'password',
+      pwdType: 'password',
       hasErrors,
       form: this.$form.createForm(this, { name: "horizontal_login" })
     };

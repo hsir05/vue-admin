@@ -26,8 +26,8 @@ const routes = [
     children: [
       {
         path: "/",
-        icon: "user",
-        name: "Home",
+        icon: "setting",
+        name: "dashbord",
         meta: {
           keepAlive: true,
           auth: ["visitor", "administrator"]
@@ -35,93 +35,115 @@ const routes = [
         component: () => import("../views/Home.vue")
       },
       {
-        path: "/about",
-        name: "About",
-        icon: "video-camera",
+        path: "/zw",
+        name: "知网采集",
+        icon: "zhihu",
         meta: {
           keepAlive: true,
           auth: ["visitor", "administrator"]
         },
-        component: () => import("../views/About.vue")
+        component: () => import("../views/zw.vue")
       },
-      {
-        path: "/list",
-        name: "List",
-        icon: "bars",
-        meta: {
-          keepAlive: true,
-          auth: ["visitor", "administrator"]
+        {
+            path: "/wf",
+            name: "万方采集",
+            icon: "windows",
+            meta: {
+                keepAlive: true,
+                auth: ["visitor", "administrator"]
+            },
+            component: () => import("../views/wf.vue")
         },
-        component: () => import("../views/list/List.vue")
-      },
-      {
-        path: "/echarts",
-        name: "echarts",
-        icon: "bars",
-        meta: {
-          keepAlive: true,
-          auth: ["visitor", "administrator"]
+        {
+            path: "/cscd",
+            name: "CSCD采集",
+            icon: "chrome",
+            meta: {
+                keepAlive: true,
+                auth: ["visitor", "administrator"]
+            },
+            component: () => import("../views/cscd.vue")
         },
-        component: () => import("../views/echarts/Echarts.vue")
-      },
-      {
-        path: "/test",
-        name: "Test",
-        meta: {
-          keepAlive: true,
-          auth: ["visitor", "administrator"]
+        {
+            path: "/axs",
+            name: "爱学术采集",
+            icon: "dribbble",
+            meta: {
+                keepAlive: true,
+                auth: ["visitor", "administrator"]
+            },
+            component: () => import("../views/axs.vue")
         },
-        icon: "setting",
-        component: () => import("../views/test/Test.vue"),
-        children: [
-          {
-            path: "/test/children",
-            name: "Children",
+        {
+            path: "/ei",
+            name: "EI采集",
+            icon: "slack",
             meta: {
-              keepAlive: true,
-              auth: ["visitor", "administrator"]
+                keepAlive: true,
+                auth: ["visitor", "administrator"]
             },
-            component: () => import("../views/test/Children.vue")
-          },
-          {
-            path: "/form",
+            component: () => import("../views/ei.vue")
+        },
+        {
+            path: "/webOS",
+            name: "web of science",
+            icon: "sketch",
             meta: {
-              keepAlive: true,
-              auth: ["visitor", "administrator"]
+                keepAlive: true,
+                auth: ["visitor", "administrator"]
             },
-            name: "Form",
-            component: () => import("../views/form/Basic.vue")
-          },
-          {
-            path: "/ueditor",
+            component: () => import("../views/webOS.vue")
+        },
+        {
+            path: "/scopus",
+            name: "scopus",
+            icon: "yuque",
             meta: {
-              keepAlive: true,
-              auth: ["visitor", "administrator"]
+                keepAlive: true,
+                auth: ["visitor", "administrator"]
             },
-            name: "Ueditor",
-            component: () => import("../views/form/Ueditor.vue")
-          },
-          {
-            path: "/test/list",
-            name: "List2",
+            component: () => import("../views/scopus.vue")
+        },
+        {
+            path: "/oai",
+            name: "OAI",
+            icon: "reddit",
             meta: {
-              keepAlive: true,
-              auth: ["visitor", "administrator"]
+                keepAlive: true,
+                auth: ["visitor", "administrator"]
             },
-            component: () => import("../views/list/List.vue")
-          },
-          {
-            path: "/test/403",
-            name: "403",
-            component: () => import("../views/exception/403.vue")
-          },
-          {
-            path: "/test/500",
-            name: "500",
-            component: () => import("../views/exception/500.vue")
-          }
-        ]
-      }
+            component: () => import("../views/oai.vue")
+        },
+        {
+            path: "/doi",
+            name: "Doi全文下载",
+            icon: "appstore",
+            meta: {
+                keepAlive: true,
+                auth: ["visitor", "administrator"]
+            },
+            component: () => import("../views/doi.vue")
+        },
+        {
+            path: "/import",
+            name: "数据导出",
+            icon: "appstore",
+            meta: {
+                keepAlive: true,
+                auth: ["visitor", "administrator"]
+            },
+            component: () => import("../views/import.vue")
+        },
+        {
+            path: "/subject",
+            name: "专题管理",
+            icon: "appstore",
+            meta: {
+                keepAlive: true,
+                auth: ["visitor", "administrator"]
+            },
+            component: () => import("../views/subject.vue")
+        },
     ]
   },
   { path: "*", redirect: "/" }

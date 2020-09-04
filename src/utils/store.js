@@ -30,6 +30,6 @@ export const removeSession = key => {
 /**
  * 清除所有数据
  */
-export const removeAllSession = () => {
+export const clearSession = () => {
   sessionStorage.clear();
 };
